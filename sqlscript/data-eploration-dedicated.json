@@ -1,6 +1,9 @@
 {
 	"name": "data-eploration-dedicated",
 	"properties": {
+		"folder": {
+			"name": "dedicated"
+		},
 		"content": {
 			"query": "SELECT TOP (100) [DateID]\n,[MedallionID]\n,[HackneyLicenseID]\n,[PickupTimeID]\n,[DropoffTimeID]\n,[PickupGeographyID]\n,[DropoffGeographyID]\n,[PickupLatitude]\n,[PickupLongitude]\n,[PickupLatLong]\n,[DropoffLatitude]\n,[DropoffLongitude]\n,[DropoffLatLong]\n,[PassengerCount]\n,[TripDurationSeconds]\n,[TripDistanceMiles]\n,[PaymentType]\n,[FareAmount]\n,[SurchargeAmount]\n,[TaxAmount]\n,[TipAmount]\n,[TollsAmount]\n,[TotalAmount]\n FROM [dbo].[NYCTaxiTripSmall]",
 			"metadata": {

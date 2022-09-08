@@ -3,5 +3,5 @@
 
 # Sitography
 - [What is Azure Synapse Analytics](https://docs.microsoft.com/en-us/azure/synapse-analytics/overview-what-is)
-- [Analyze Data with a Serverless SQL pool](https://docs.microsoft.com/en-us/azure/synapse-analytics/get-started-analyze-sql-on-demand)
+- [Analyze data with serverless SQL pool](https://docs.microsoft.com/en-us/azure/synapse-analytics/get-started-analyze-sql-on-demand)
 - [Analyze data with dedicated SQL pools](https://docs.microsoft.com/en-us/azure/synapse-analytics/get-started-analyze-sql-pool)

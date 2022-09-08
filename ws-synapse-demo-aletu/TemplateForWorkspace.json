@@ -91,6 +91,52 @@
 				"typeProperties": {}
 			},
 			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/data-exploraation-serverless')]",
+			"type": "Microsoft.Synapse/workspaces/sqlscripts",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"folder": {
+					"name": "serverless"
+				},
+				"content": {
+					"query": "SELECT\n    TOP 100 *\nFROM\n    OPENROWSET(\n        BULK 'https://datalakedemoaletu.dfs.core.windows.net/filesysdemoaletu/NYCTripSmall.parquet',\n        FORMAT='PARQUET'\n    ) AS [result]\n;\nGO",
+					"metadata": {
+						"language": "sql"
+					},
+					"currentConnection": {
+						"databaseName": "master",
+						"poolName": "Built-in"
+					},
+					"resultLimit": 5000
+				},
+				"type": "SqlQuery"
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/data-exploration-database')]",
+			"type": "Microsoft.Synapse/workspaces/sqlscripts",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"folder": {
+					"name": "serverless"
+				},
+				"content": {
+					"query": "CREATE DATABASE DataExplorationDB \n                COLLATE Latin1_General_100_BIN2_UTF8\n;\nGO\n\nUSE DataExplorationDB\n;\nGO\n\nCREATE EXTERNAL DATA SOURCE DemoLake\nWITH ( LOCATION = 'https://datalakedemoaletu.dfs.core.windows.net')\n;\nGO\n\nCREATE LOGIN data_explorer WITH PASSWORD = 'SeptemberTango2022!'\n;\nGO\n\nCREATE USER data_explorer FOR LOGIN data_explorer\n;\nGO\nGRANT ADMINISTER DATABASE BULK OPERATIONS TO data_explorer\n;\nGO\n\nSELECT\n    TOP 100 *\nFROM\n    OPENROWSET(\n            BULK '/filesysdemoaletu/NYCTripSmall.parquet',\n            DATA_SOURCE = 'DemoLake',\n            FORMAT='PARQUET'\n    ) AS [result]\n;\nGO\n\n\n\n\n\n\n\n",
+					"metadata": {
+						"language": "sql"
+					},
+					"currentConnection": {
+						"databaseName": "DataExplorationDB",
+						"poolName": "Built-in"
+					},
+					"resultLimit": 5000
+				},
+				"type": "SqlQuery"
+			},
+			"dependsOn": []
 		}
 	]
 }

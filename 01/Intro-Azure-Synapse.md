@@ -19,7 +19,7 @@ Formerly was known as *Azure SQL Data Warehouse*, but is not a mere Data Warehou
 Is a *distributed* query system for tSQL that enables data warehousing and data virtualization scenarios. Moreover extends tSQL to address streaming analytics and machine learning scenarios.
 Synapse SQL offers two types **data processing systems**:
  - Serverless
- - Dedicated.
+ - Dedicated
 
 Synapse SQL can use built-in streaming capabilities to land data from cloud to SQL tables. Can also integrate AI with SQL by using machine learning models using the [tSQL PREDICT function](https://docs.microsoft.com/en-us/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest&preserve-view=true).
 

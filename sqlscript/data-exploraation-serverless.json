@@ -1,0 +1,20 @@
+{
+	"name": "data-exploraation-serverless",
+	"properties": {
+		"folder": {
+			"name": "serverless"
+		},
+		"content": {
+			"query": "SELECT\n    TOP 100 *\nFROM\n    OPENROWSET(\n        BULK 'https://datalakedemoaletu.dfs.core.windows.net/filesysdemoaletu/NYCTripSmall.parquet',\n        FORMAT='PARQUET'\n    ) AS [result]\n;\nGO",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "master",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

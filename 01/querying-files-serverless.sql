@@ -4,10 +4,13 @@ GO
 
 /*
 To run queries using serverless SQL pool, create data source that serverless SQL pool can use use to access files in storage.
+A database scoped credential is a record that contains the authentication information that is required to connect to a resource outside SQL Server. 
+Most credentials include a Windows user and password.
+Before creating a database scoped credential, the database must have a master key to protect the credential.
 */
 
 -- create master key that will protect the credentials:
-CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'SeptemberTango2022!'
+CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'type a password'
 
 -- create credentials for containers in our demo storage account
 CREATE DATABASE SCOPED CREDENTIAL sqlondemand

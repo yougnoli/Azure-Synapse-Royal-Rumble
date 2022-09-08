@@ -10,3 +10,7 @@ Azure Synapse Analytics is a set of services in the field of data analysis, data
     - Power BI
     - Cosmos DB
     - Azure ML
+ 
+Formerly was known as *Azure SQL Data Warehouse*, but is not a mere Data Warehouse anymore. Itprovides two different types of compute environments for different workloads:
+ - SQL Compute Environment
+ - Spark Compute Environment

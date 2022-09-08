@@ -6,3 +6,4 @@
 - [Analyze data with serverless SQL pool](https://docs.microsoft.com/en-us/azure/synapse-analytics/get-started-analyze-sql-on-demand)
 - [Analyze data with dedicated SQL pools](https://docs.microsoft.com/en-us/azure/synapse-analytics/get-started-analyze-sql-pool)
 - [Use serverless SQL pool](https://docs.microsoft.com/en-us/azure/synapse-analytics/quickstart-serverless-sql-pool)
+- [Database Scoped Credentials](https://docs.microsoft.com/en-us/sql/t-sql/statements/create-database-scoped-credential-transact-sql?view=sql-server-ver16)

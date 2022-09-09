@@ -35,5 +35,12 @@ Note: some aspects of tSQL language are not supported due to the design of serve
 
 
 ## Dedicated SQL Pool
-Dedicated SQL pool refers to the enterprise data warehousing features. The size of a dedicated SQL pool is determined by **Data Warehousing Units (DWU)**. Once you have created you dedicated SQL pool, you can import big data with simple [PolyBase](https://github.com/yougnoli/Azure-Synapse/blob/main/01/Intro02-Polybase.md) tSQL queryies, and then use the power of the *distributed query engine* to run high performance analytics. 
+Dedicated SQL pool refers to the enterprise data warehousing features. The size of a dedicated SQL pool is determined by **Data Warehousing Units (DWU)**. Once you have created you dedicated SQL pool, you can import big data with simple [PolyBase](https://github.com/yougnoli/Azure-Synapse/blob/main/01/Intro02-Polybase.md) tSQL queryies, and then use the power of the *distributed query engine* to run high performance analytics.
 There is an infrastructure to mantain: you can pause your dedicated SQL pool when you're not using it, which stops the billing of compute resources. You can scale resources to meet your performance demands.
+
+### Dedicated SQL pool benefits:
+ - It is easy to create a new dedicated SQL poolor scale your existing one as per your business need
+ - Demands can come from different sources: Azure Databricks, Azure Data Factory, cube refreshes, custom apps
+ - Storage is kept separate from compute, you can scale your compute without worrying about the storage
+ - Supports tSQL
+ - Uses **columnar storage** to store data in relational tables.This format significantlyhelps in data compression, which reduces data storage costs and improve query performance

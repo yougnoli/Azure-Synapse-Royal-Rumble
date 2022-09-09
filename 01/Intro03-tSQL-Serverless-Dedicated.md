@@ -4,4 +4,6 @@ Transact-SQL is used in *serverless SQL pool* and *dedicated* model, but there a
 
 ## Database objects
 
-|________| Dedicated |_________ Serverless |
+|   | Dedicated | Serverless |
+| --- | --- | --- |
+

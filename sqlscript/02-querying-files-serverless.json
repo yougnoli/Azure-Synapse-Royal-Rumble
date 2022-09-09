@@ -1,5 +1,5 @@
 {
-	"name": "querying-files-serverless",
+	"name": "02-querying-files-serverless",
 	"properties": {
 		"folder": {
 			"name": "serverless"

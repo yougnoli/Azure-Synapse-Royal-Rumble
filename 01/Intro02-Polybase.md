@@ -5,3 +5,4 @@ It is called **data virtualization** because PolyBase allow the data to stay in 
 
 PolyBase enables Azure Synapse Analytics to import and export data fromAzure Data Lake.
 
+https://docs.microsoft.com/en-us/azure/synapse-analytics/sql/load-data-overview

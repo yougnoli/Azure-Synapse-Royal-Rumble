@@ -18,7 +18,7 @@ There is no charge for resources reserved, you are only being charged for the da
 If you use **Apache Spark** for Azure Synapse in your data pipeline, for data preparation, cleansing or enrichment, you can query external Spark tables you've created in the process, directly from serverless SQL pool.
 
 Note: some aspects of tSQL language are not supported due to the design of serverless SQL pool:
- - DDL (Data Manipulation Language) statements related to **view** and **security** only
+ - DDL (Data Definition Language) statements related to **view** and **security** only
  - DML (Data Manipulation Language) statements
  - No Tables, Triggers, Materialized Views because has not local storage, only metadata objects can be stored
 

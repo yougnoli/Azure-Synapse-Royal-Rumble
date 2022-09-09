@@ -1,5 +1,5 @@
 {
-	"name": "load-data",
+	"name": "00-load-data",
 	"properties": {
 		"folder": {
 			"name": "dedicated"

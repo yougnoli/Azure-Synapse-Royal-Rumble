@@ -35,18 +35,20 @@ Transact-SQL is used in *serverless SQL pool* and *dedicated* model, but there a
 | **Data Load** | Yes | No, you cannot load data into the serverless SQL pool because data is stored on external storage |
 | **Data Export** | Yes, using CETAS | Yes, using CETAS |
 
+# Serverless vs Dedicated
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+## Computation:
+ - **Serverless** means that the compute associated with a SQL poll is managed and allocated by Microsoft. In this way customers do not have to create or allocate compute to query data that is located in the underlying Data Lake. This data can be *structured* or *unstructured*, stored in different *file formats*. No need to cluster configuration.
+ - **Dedicated** means that the user has to configure performance level (measured in *Data Warehouse Units (DWU)*) and manage the scalability of the resource. It needs to set up an infrastructure.
+ 
+## Storage:
+ - **Serverless** points directly to the Data Lake. Data stay in the Data Lake. It is possible to create a *Logical DWH* over the Data Lake, without moving, transforming and relocating data.
+ - **Dedicated** provides data storage in a relational table with *columnar* storage: it improves query performance and limits the storage costs
+ 
+## Costs:
+ - **Serverless** is a pay per use model: there is no costs for resources not used (5$/TB). The charge is based on data processed by each run of the query 
+ - **Dedicated** the user pays for reserved resources at a pre decided scale. It is pausable, when is turned off there no costs
+  
+## Use Cases:
+ - **Serverless** is used for ad-hoc querying, exploratory data analysis, initial analysis before the ETL development
+ - **Dedicated** is built for specific workloads where is needed performance, optimized compute startegy and persisted data warehouses

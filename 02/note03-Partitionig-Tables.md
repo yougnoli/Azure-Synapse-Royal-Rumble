@@ -15,3 +15,6 @@ For example a delete statement (*a sales fact table might contain just data for 
 A query that applies a filter to partitioned data can **limit the scan to only the qualifying partitions**. This method of filtering can avoid a full table scan and only scan a smaller subset of data.
 
 ## Partition sizing
+
+
+https://docs.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-partition

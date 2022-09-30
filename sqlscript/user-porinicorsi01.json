@@ -1,0 +1,17 @@
+{
+	"name": "user-porinicorsi01",
+	"properties": {
+		"content": {
+			"query": "-- get tables from porinicorsi01 LabVendite\n\nselect * from sys.sysusers\n\n-- creo una SQL login -> mi posiziono sul master:\ncreate login syn_reader with password = 'AlfaBravo22$'\t--> questa non può fare assolutamente nulla! Neanche connettersi\n\n-- creo USER (nota: il nome dello user può essere diverso dalla login => sono 2 oggetti diversi) -> mi posiziono sul master:\ncreate user syn_reader from login syn_reader\n\n-- mi posiziono sul db Test\n-- creo USER (nota: il nome dello user può essere diverso dalla login => sono 2 oggetti diversi):\ncreate user syn_reader from login syn_reader\n\n-- Voglio dare i diritti a syn_reader di leggere qualsiasi cosa (fare una SELECT su tutte le tabelle):\nexec sp_addrolemember 'db_datareader', 'syn_reader'\n\n-- CAMBIO USER:\nexecute as user = 'syn_reader'\n-- TORNO ALLA MIA UTENZA INIZIALE\nrevert\n-- CONTROLLO UTENZA\nselect user_name () as user_now, original_login() as user_original\n\nselect top 100 * from dbo.negozi\n\nselect \n\tname as tablename\n\t,schema_name(schema_id) as schemaname\nfrom sys.tables",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "master",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

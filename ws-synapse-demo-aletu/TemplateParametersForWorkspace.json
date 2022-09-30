@@ -5,6 +5,9 @@
 		"workspaceName": {
 			"value": "ws-synapse-demo-aletu"
 		},
+		"AzureSqlDB_connectionString": {
+			"value": ""
+		},
 		"ws-synapse-demo-aletu-WorkspaceDefaultSqlServer_connectionString": {
 			"value": ""
 		},

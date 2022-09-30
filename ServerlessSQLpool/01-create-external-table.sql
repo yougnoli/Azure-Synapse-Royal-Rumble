@@ -70,6 +70,19 @@ GO
 -- now check on the DataLake for the new folder in asadatalake754874wwi/quarterly-sales 
 -- and you will see the csv file with the data from the external table
 
+  SELECT
+      *
+  FROM
+      OPENROWSET(
+          BULK 'https://asadatalake754874.dfs.core.windows.net/wwi/quarterly-sales/*.csv',
+          FORMAT = 'CSV',
+          PARSER_VERSION = '2.0'
+      ) with (
+          anno INT
+          ,trimestre INT
+          ,revenue BIGINT
+      ) AS [result]
+
 -- check query on the external table
 SELECT * 
 FROM dbo.QuarterlySales

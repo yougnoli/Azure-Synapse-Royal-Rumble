@@ -1,9 +1,0 @@
-{
-	"name": "sql to lake",
-	"properties": {
-		"folder": {
-			"name": "lab-vendite"
-		},
-		"annotations": []
-	}
-}

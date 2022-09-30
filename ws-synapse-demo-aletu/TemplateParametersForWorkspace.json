@@ -8,9 +8,6 @@
 		"ws-synapse-demo-aletu-WorkspaceDefaultSqlServer_connectionString": {
 			"value": ""
 		},
-		"AzureKeyVault1_properties_typeProperties_baseUrl": {
-			"value": "https://PoriniEducationKeyVault.vault.azure.net/"
-		},
 		"ws-synapse-demo-aletu-WorkspaceDefaultStorage_properties_typeProperties_url": {
 			"value": "https://datalakedemoaletu.dfs.core.windows.net"
 		}

@@ -125,7 +125,7 @@
 									],
 									"outputs": [
 										{
-											"referenceName": "ParquetLabVenfite",
+											"referenceName": "ParquetLabVendite",
 											"type": "DatasetReference",
 											"parameters": {}
 										}
@@ -143,11 +143,11 @@
 			},
 			"dependsOn": [
 				"[concat(variables('workspaceId'), '/datasets/TablesLabVendite')]",
-				"[concat(variables('workspaceId'), '/datasets/ParquetLabVenfite')]"
+				"[concat(variables('workspaceId'), '/datasets/ParquetLabVendite')]"
 			]
 		},
 		{
-			"name": "[concat(parameters('workspaceName'), '/ParquetLabVenfite')]",
+			"name": "[concat(parameters('workspaceName'), '/ParquetLabVendite')]",
 			"type": "Microsoft.Synapse/workspaces/datasets",
 			"apiVersion": "2019-06-01-preview",
 			"properties": {

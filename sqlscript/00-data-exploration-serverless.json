@@ -5,7 +5,7 @@
 			"name": "01-serverless"
 		},
 		"content": {
-			"query": "SELECT\n    TOP 100 *\nFROM\n    OPENROWSET(\n        BULK 'https://datalakedemoaletu.dfs.core.windows.net/filesysdemoaletu/NYCTripSmall.parquet',\n        FORMAT='PARQUET'\n    ) AS [result]\n;\nGO",
+			"query": "SELECT\n    TOP 100 *\nFROM\n    OPENROWSET(\n        BULK 'https://datalakedemoaletu.dfs.core.windows.net/nyc-taxi/NYCTripSmall.parquet',\n        FORMAT='PARQUET'\n    ) AS [result]\n;\nGO",
 			"metadata": {
 				"language": "sql"
 			},

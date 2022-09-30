@@ -5,7 +5,7 @@
 			"name": "01-serverless"
 		},
 		"content": {
-			"query": "CREATE DATABASE DataExplorationDB \n                COLLATE Latin1_General_100_BIN2_UTF8\n;\nGO\n\nUSE DataExplorationDB\n;\nGO\n\nCREATE EXTERNAL DATA SOURCE DemoLake\nWITH ( LOCATION = 'https://datalakedemoaletu.dfs.core.windows.net')\n;\nGO\n\nCREATE LOGIN data_explorer WITH PASSWORD = 'SeptemberTango2022!'\n;\nGO\n\nCREATE USER data_explorer FOR LOGIN data_explorer\n;\nGO\nGRANT ADMINISTER DATABASE BULK OPERATIONS TO data_explorer\n;\nGO\n\nSELECT\n    TOP 100 *\nFROM\n    OPENROWSET(\n            BULK '/filesysdemoaletu/NYCTripSmall.parquet',\n            DATA_SOURCE = 'DemoLake',\n            FORMAT='PARQUET'\n    ) AS [result]\n;\nGO\n\n\n\n\n\n\n\n",
+			"query": "CREATE DATABASE DataExplorationDB \n                COLLATE Latin1_General_100_BIN2_UTF8\n;\nGO\n\nUSE DataExplorationDB\n;\nGO\n\nCREATE EXTERNAL DATA SOURCE DemoLake\nWITH ( LOCATION = 'https://datalakedemoaletu.dfs.core.windows.net')\n;\nGO\n\nCREATE LOGIN data_explorer WITH PASSWORD = 'SeptemberTango2022!'\n;\nGO\n\nCREATE USER data_explorer FOR LOGIN data_explorer\n;\nGO\nGRANT ADMINISTER DATABASE BULK OPERATIONS TO data_explorer\n;\nGO\n\nSELECT\n    TOP 100 *\nFROM\n    OPENROWSET(\n            BULK '/nyc-taxi/NYCTripSmall.parquet',\n            DATA_SOURCE = 'DemoLake',\n            FORMAT='PARQUET'\n    ) AS [result]\n;\nGO\n\n\n\n\n\n\n\n",
 			"metadata": {
 				"language": "sql"
 			},

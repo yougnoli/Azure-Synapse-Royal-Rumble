@@ -1,5 +1,5 @@
 {
-	"name": "ParquetLabVenfite",
+	"name": "ParquetLabVendite",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ws-synapse-demo-aletu-WorkspaceDefaultStorage",
@@ -10,8 +10,14 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"folderPath": "@item().TableName",
-				"fileSystem": "@item().SchemaName"
+				"folderPath": {
+					"value": "@item().TableName",
+					"type": "Expression"
+				},
+				"fileSystem": {
+					"value": "@item().SchemaName",
+					"type": "Expression"
+				}
 			},
 			"compressionCodec": "snappy"
 		},

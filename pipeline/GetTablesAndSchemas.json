@@ -95,7 +95,7 @@
 							],
 							"outputs": [
 								{
-									"referenceName": "ParquetLabVenfite",
+									"referenceName": "ParquetLabVendite",
 									"type": "DatasetReference"
 								}
 							]

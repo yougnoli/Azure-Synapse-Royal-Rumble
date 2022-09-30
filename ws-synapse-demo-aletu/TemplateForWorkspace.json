@@ -21,6 +21,15 @@
 	},
 	"resources": [
 		{
+			"name": "[concat(parameters('workspaceName'), '/SparkPool01')]",
+			"type": "Microsoft.Synapse/workspaces/bigDataPools",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"annotations": []
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('workspaceName'), '/ws-synapse-demo-aletu-WorkspaceDefaultSqlServer')]",
 			"type": "Microsoft.Synapse/workspaces/linkedServices",
 			"apiVersion": "2019-06-01-preview",
@@ -101,7 +110,7 @@
 					"name": "01-serverless"
 				},
 				"content": {
-					"query": "SELECT\n    TOP 100 *\nFROM\n    OPENROWSET(\n        BULK 'https://datalakedemoaletu.dfs.core.windows.net/filesysdemoaletu/NYCTripSmall.parquet',\n        FORMAT='PARQUET'\n    ) AS [result]\n;\nGO",
+					"query": "SELECT\n    TOP 100 *\nFROM\n    OPENROWSET(\n        BULK 'https://datalakedemoaletu.dfs.core.windows.net/nyc-taxi/NYCTripSmall.parquet',\n        FORMAT='PARQUET'\n    ) AS [result]\n;\nGO",
 					"metadata": {
 						"language": "sql"
 					},
@@ -124,7 +133,7 @@
 					"name": "01-dedicated"
 				},
 				"content": {
-					"query": "IF NOT EXISTS (SELECT * FROM sys.objects O JOIN sys.schemas S ON O.schema_id = S.schema_id WHERE O.NAME = 'NYCTaxiTripSmall' AND O.TYPE = 'U' AND S.NAME = 'dbo')\nCREATE TABLE dbo.NYCTaxiTripSmall\n    (\n     [DateID] int,\n     [MedallionID] int,\n     [HackneyLicenseID] int,\n     [PickupTimeID] int,\n     [DropoffTimeID] int,\n     [PickupGeographyID] int,\n     [DropoffGeographyID] int,\n     [PickupLatitude] float,\n     [PickupLongitude] float,\n     [PickupLatLong] nvarchar(4000),\n     [DropoffLatitude] float,\n     [DropoffLongitude] float,\n     [DropoffLatLong] nvarchar(4000),\n     [PassengerCount] int,\n     [TripDurationSeconds] int,\n     [TripDistanceMiles] float,\n     [PaymentType] nvarchar(4000),\n     [FareAmount] numeric(19,4),\n     [SurchargeAmount] numeric(19,4),\n     [TaxAmount] numeric(19,4),\n     [TipAmount] numeric(19,4),\n     [TollsAmount] numeric(19,4),\n     [TotalAmount] numeric(19,4)\n    )\nWITH\n    (\n    DISTRIBUTION = ROUND_ROBIN,\n     CLUSTERED COLUMNSTORE INDEX\n     -- HEAP\n    )\nGO\n\nCOPY INTO dbo.NYCTaxiTripSmall\n(DateID 1, MedallionID 2, HackneyLicenseID 3, PickupTimeID 4, DropoffTimeID 5,\nPickupGeographyID 6, DropoffGeographyID 7, PickupLatitude 8, PickupLongitude 9, \nPickupLatLong 10, DropoffLatitude 11, DropoffLongitude 12, DropoffLatLong 13, \nPassengerCount 14, TripDurationSeconds 15, TripDistanceMiles 16, PaymentType 17, \nFareAmount 18, SurchargeAmount 19, TaxAmount 20, TipAmount 21, TollsAmount 22, \nTotalAmount 23)\nFROM 'https://datalakedemoaletu.dfs.core.windows.net/filesysdemoaletu/NYCTripSmall.parquet'\nWITH\n(\n    FILE_TYPE = 'PARQUET'\n    ,MAXERRORS = 0\n    ,IDENTITY_INSERT = 'OFF'\n)",
+					"query": "IF NOT EXISTS (SELECT * FROM sys.objects O JOIN sys.schemas S ON O.schema_id = S.schema_id WHERE O.NAME = 'NYCTaxiTripSmall' AND O.TYPE = 'U' AND S.NAME = 'dbo')\nCREATE TABLE dbo.NYCTaxiTripSmall\n    (\n     [DateID] int,\n     [MedallionID] int,\n     [HackneyLicenseID] int,\n     [PickupTimeID] int,\n     [DropoffTimeID] int,\n     [PickupGeographyID] int,\n     [DropoffGeographyID] int,\n     [PickupLatitude] float,\n     [PickupLongitude] float,\n     [PickupLatLong] nvarchar(4000),\n     [DropoffLatitude] float,\n     [DropoffLongitude] float,\n     [DropoffLatLong] nvarchar(4000),\n     [PassengerCount] int,\n     [TripDurationSeconds] int,\n     [TripDistanceMiles] float,\n     [PaymentType] nvarchar(4000),\n     [FareAmount] numeric(19,4),\n     [SurchargeAmount] numeric(19,4),\n     [TaxAmount] numeric(19,4),\n     [TipAmount] numeric(19,4),\n     [TollsAmount] numeric(19,4),\n     [TotalAmount] numeric(19,4)\n    )\nWITH\n    (\n    DISTRIBUTION = ROUND_ROBIN,\n     CLUSTERED COLUMNSTORE INDEX\n     -- HEAP\n    )\nGO\n\nCOPY INTO dbo.NYCTaxiTripSmall\n(DateID 1, MedallionID 2, HackneyLicenseID 3, PickupTimeID 4, DropoffTimeID 5,\nPickupGeographyID 6, DropoffGeographyID 7, PickupLatitude 8, PickupLongitude 9, \nPickupLatLong 10, DropoffLatitude 11, DropoffLongitude 12, DropoffLatLong 13, \nPassengerCount 14, TripDurationSeconds 15, TripDistanceMiles 16, PaymentType 17, \nFareAmount 18, SurchargeAmount 19, TaxAmount 20, TipAmount 21, TollsAmount 22, \nTotalAmount 23)\nFROM 'https://datalakedemoaletu.dfs.core.windows.net/nyc-taxi/NYCTripSmall.parquet'\nWITH\n(\n    FILE_TYPE = 'PARQUET'\n    ,MAXERRORS = 0\n    ,IDENTITY_INSERT = 'OFF'\n)",
 					"metadata": {
 						"language": "sql"
 					},
@@ -170,7 +179,7 @@
 					"name": "01-serverless"
 				},
 				"content": {
-					"query": "CREATE DATABASE DataExplorationDB \n                COLLATE Latin1_General_100_BIN2_UTF8\n;\nGO\n\nUSE DataExplorationDB\n;\nGO\n\nCREATE EXTERNAL DATA SOURCE DemoLake\nWITH ( LOCATION = 'https://datalakedemoaletu.dfs.core.windows.net')\n;\nGO\n\nCREATE LOGIN data_explorer WITH PASSWORD = 'SeptemberTango2022!'\n;\nGO\n\nCREATE USER data_explorer FOR LOGIN data_explorer\n;\nGO\nGRANT ADMINISTER DATABASE BULK OPERATIONS TO data_explorer\n;\nGO\n\nSELECT\n    TOP 100 *\nFROM\n    OPENROWSET(\n            BULK '/filesysdemoaletu/NYCTripSmall.parquet',\n            DATA_SOURCE = 'DemoLake',\n            FORMAT='PARQUET'\n    ) AS [result]\n;\nGO\n\n\n\n\n\n\n\n",
+					"query": "CREATE DATABASE DataExplorationDB \n                COLLATE Latin1_General_100_BIN2_UTF8\n;\nGO\n\nUSE DataExplorationDB\n;\nGO\n\nCREATE EXTERNAL DATA SOURCE DemoLake\nWITH ( LOCATION = 'https://datalakedemoaletu.dfs.core.windows.net')\n;\nGO\n\nCREATE LOGIN data_explorer WITH PASSWORD = 'SeptemberTango2022!'\n;\nGO\n\nCREATE USER data_explorer FOR LOGIN data_explorer\n;\nGO\nGRANT ADMINISTER DATABASE BULK OPERATIONS TO data_explorer\n;\nGO\n\nSELECT\n    TOP 100 *\nFROM\n    OPENROWSET(\n            BULK '/nyc-taxi/NYCTripSmall.parquet',\n            DATA_SOURCE = 'DemoLake',\n            FORMAT='PARQUET'\n    ) AS [result]\n;\nGO\n\n\n\n\n\n\n\n",
 					"metadata": {
 						"language": "sql"
 					},
@@ -229,6 +238,31 @@
 				"type": "SqlQuery"
 			},
 			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/SparkPool01')]",
+			"type": "Microsoft.Synapse/workspaces/bigDataPools",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"autoPause": {
+					"enabled": true,
+					"delayInMinutes": 15
+				},
+				"autoScale": {
+					"enabled": true,
+					"maxNodeCount": 10,
+					"minNodeCount": 3
+				},
+				"nodeCount": 10,
+				"nodeSize": "Small",
+				"nodeSizeFamily": "MemoryOptimized",
+				"sparkVersion": "3.2",
+				"isComputeIsolationEnabled": false,
+				"sessionLevelPackagesEnabled": false,
+				"annotations": []
+			},
+			"dependsOn": [],
+			"location": "northeurope"
 		},
 		{
 			"name": "[concat(parameters('workspaceName'), '/SQLPOOL1')]",

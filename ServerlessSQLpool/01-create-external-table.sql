@@ -45,9 +45,9 @@ GO
 -- create external table
 CREATE EXTERNAL TABLE QuarterlySales
 WITH (
-    LOCATION = 'quarterly-sales',
+    LOCATION = 'quarterly-sales',    -- new folder where the data are stored
     DATA_SOURCE = WwiDataADLS,
-    FILE_FORMAT = CsvFormat
+    FILE_FORMAT = CsvFormat    -- new file format of the stored data
 )
 AS
     -- query
@@ -66,6 +66,9 @@ AS
         InvoiceQuarter
 ;
 GO
+
+-- now check on the DataLake for the new folder in asadatalake754874wwi/quarterly-sales 
+-- and you will see the csv file with the data from the external table
 
 -- check query on the external table
 SELECT * 

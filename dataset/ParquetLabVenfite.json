@@ -10,8 +10,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"folderPath": "@item().SchemaName/@item().TableName",
-				"fileSystem": "lab-vendite"
+				"folderPath": "@item().TableName",
+				"fileSystem": "@item().SchemaName"
 			},
 			"compressionCodec": "snappy"
 		},

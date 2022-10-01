@@ -108,6 +108,9 @@
 				}
 			}
 		],
+		"folder": {
+			"name": "lab vendite"
+		},
 		"annotations": []
 	}
 }

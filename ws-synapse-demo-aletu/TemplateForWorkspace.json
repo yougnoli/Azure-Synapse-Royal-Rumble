@@ -142,6 +142,9 @@
 					"elapsedTimeMetric": {},
 					"cancelAfter": {}
 				},
+				"folder": {
+					"name": "lab vendite"
+				},
 				"annotations": []
 			},
 			"dependsOn": [

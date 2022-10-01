@@ -96,7 +96,11 @@
 							"outputs": [
 								{
 									"referenceName": "ParquetLabVendite",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"folderName": "@item().SchemaName",
+										"folderPath": "@item().TableName"
+									}
 								}
 							]
 						}

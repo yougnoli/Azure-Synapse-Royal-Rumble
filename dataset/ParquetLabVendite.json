@@ -5,19 +5,24 @@
 			"referenceName": "ws-synapse-demo-aletu-WorkspaceDefaultStorage",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"folderName": {
+				"type": "string"
+			},
+			"folderPath": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "Parquet",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
 				"folderPath": {
-					"value": "@item().TableName",
+					"value": "@concat(\n    dataset().folderName,'/',\n    dataset().folderPath)",
 					"type": "Expression"
 				},
-				"fileSystem": {
-					"value": "@item().SchemaName",
-					"type": "Expression"
-				}
+				"fileSystem": "lab-vendite"
 			},
 			"compressionCodec": "snappy"
 		},

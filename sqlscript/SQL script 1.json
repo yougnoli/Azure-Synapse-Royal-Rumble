@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 1",
+	"properties": {
+		"content": {
+			"query": "IF NOT EXISTS (SELECT * FROM sys.external_file_formats WHERE name = 'SynapseDelimitedTextFormat') \n\tCREATE EXTERNAL FILE FORMAT [SynapseDelimitedTextFormat] \n\tWITH ( FORMAT_TYPE = DELIMITEDTEXT ,\n\t       FORMAT_OPTIONS (\n\t\t\t FIELD_TERMINATOR = ',',\n\t\t\t USE_TYPE_DEFAULT = FALSE,\n\t\t\t FIRST_ROW = 2\n\t\t\t))\nGO\n\nIF NOT EXISTS (SELECT * FROM sys.external_data_sources WHERE name = 'test_datalakedemoaletu_dfs_core_windows_net') \n\tCREATE EXTERNAL DATA SOURCE [test_datalakedemoaletu_dfs_core_windows_net] \n\tWITH (\n\t\tLOCATION = 'abfss://test@datalakedemoaletu.dfs.core.windows.net' \n\t)\nGO\n\nCREATE EXTERNAL TABLE ext_sales (\n\t[ProductID] bigint,\n\t[Date] date,\n\t[Zip] bigint,\n\t[Units] bigint,\n\t[Revenue] float,\n\t[Country] nvarchar(4000)\n\t)\n\tWITH (\n\tLOCATION = '*.csv',\n\tDATA_SOURCE = [test_datalakedemoaletu_dfs_core_windows_net],\n\tFILE_FORMAT = [SynapseDelimitedTextFormat]\n\t)\nGO\n\n\nSELECT TOP 100 * FROM dbo.ext_sales\nGO",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "DataExplorationDB",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
